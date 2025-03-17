@@ -1,0 +1,10 @@
+flask
+python-dotenv
+langchain-google-genai
+langchain-core
+langchain
+langchain-community
+pydantic
+wikipedia
+duckduckgo-search
+python-docx

@@ -1,0 +1,75 @@
+<!-- templates/results.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research Results</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .research-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+      .sources-list {
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2">Research Results</h1>
+            <div>
+              <a href="/" class="btn btn-outline-secondary me-2"
+                >New Research</a
+              >
+              <a
+                href="/download?topic={{ topic | urlencode }}&summary={{ summary | urlencode }}&sources={% for source in sources %}{{ source | urlencode }}{% if not loop.last %}|{% endif %}{% endfor %}"
+                class="btn btn-primary"
+                >Download as DOCX</a
+              >
+            </div>
+          </div>
+
+          {% if error %}
+          <div class="alert alert-warning" role="alert">{{ error }}</div>
+          {% endif %}
+
+          <div class="research-card">
+            <h2 class="h3 mb-4">{{ topic }}</h2>
+
+            <h3 class="h5">Executive Summary</h3>
+            <div class="summary-content">{{ summary | safe }}</div>
+
+            {% if sources %}
+            <h3 class="h5 mt-4">Sources</h3>
+            <ul class="sources-list">
+              {% for source in sources %}
+              <li>{{ source }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %} {% if tools_used %}
+            <div class="text-muted mt-4">
+              <small>Tools used: {{ tools_used | join(', ') }}</small>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
