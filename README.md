@@ -33,7 +33,7 @@ This is a web-based application built using Flask that allows users to generate 
 1. **Clone the repository:**  
 ```bash
 
-git clone [<repository-url>](https://github.com/samyakraka/research-ai-agent.git)
+git clone https://github.com/samyakraka/research-ai-agent.git
 cd research-ai-agent
 ```
 
